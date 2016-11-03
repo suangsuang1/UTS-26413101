@@ -1,0 +1,72 @@
+lwp-download http://api.worldbank.org/v2/en/indicator/SI.POV.GINI?downloadformat=csv
+unzip API_SI.POV.GINI_DS2_en_csv_v2.zip
+python setup.py install
+
+import re
+import math
+f = open('API_SI.POV.GINI_DS2_en_csv_v2.csv', 'r')
+#f = open('koferry.txt', 'r')
+
+i = 0;
+output=""
+for line in f:
+    i+=1
+    variable = re.sub('(^["a-zA-z\s"]+,)','',line)
+    searchObj = re.search('(^["a-zA-z\s"]+,)', variable)
+
+    if searchObj:
+       output+= re.sub('[",]','',searchObj.group())
+    
+    
+    variable = re.sub('(^["a-zA-z\s"]+,)','',variable)
+    variable = re.sub('(^["a-zA-z\s()]+),(["A-Z\.]+),','',variable)
+    
+    searchObj = re.search('(["\d.]+)', variable)
+
+    jumlahData =0
+    
+    for (obj) in re.findall('(["\d.]+)', variable):
+        onlyNumber = re.sub('"','',obj)
+        
+        #if onlyNumber is not "." and not "":
+        #    cek = int(float(onlyNumber));
+        #    cek = str(cek)
+        
+        #if cek.isdigit():
+            #jumlahData+=1
+        
+        
+        
+            
+    output+= str(jumlahData) +" " 
+    
+    
+    
+    output+="\n"
+    
+    
+print output
+    
+print i
+
+
+Menggunakan metode post karena
+Menyembunyikan variabel pada URL
+Lebih aman
+Tidak ada batasan panjang string
+Menggunakan $_POST dalam pengambilan variabel
+Lebih sering digunakan pada input data melalui form
+Penggunaan pada data-data penting seperti password
+
+Mengurutkan data besar ke kecil
+
+
+<?php
+$data = array("23000", "45000", "45000", "30750", "4000");
+rsort($data); //reverse sort
+
+print_r($data);
+?>
+
+
+
